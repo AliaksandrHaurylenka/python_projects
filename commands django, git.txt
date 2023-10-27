@@ -1,0 +1,21 @@
+﻿cd dyussh_kostukovka
+
+
+django-admin startproject <name site> - создание нового сайта
+
+
+python manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py startapp <name> - создание нового приложения
+py manage.py shell - переход в консоль shell
+python manage.py shell_plus --print-sql - после добавления записи в базу данных будет показана
+											распечатка sql-запроса
+
+
+git branch имя_ветки
+git checkout имя_ветки
+git checkout -b имя_ветки - сразу перейти на созданную ветку
+git merge имя_ветки - объединить ветки
+git checkout -b <название ветки> origin/<название ветки>

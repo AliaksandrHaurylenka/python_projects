@@ -1,0 +1,37 @@
+{% load static %}
+<section id="sidebar">
+
+    <!-- Intro -->
+    <section id="intro">
+        <a href="{% url 'home' %}" class="logo"><img src="{% static 'dyussh/images/logo.jpg' %}" alt=""></a>
+        <header>
+            <h2>{{title}}</h2>
+            <p>Another fine responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
+        </header>
+    </section>
+    <!-- end Intro -->
+
+    <!-- Mini Posts -->
+    {% include 'dyussh/includes/sidebar_blocks/mini_posts.html' %}
+    <!-- end Mini Posts -->
+
+    <!-- Posts List -->
+    {% include 'dyussh/includes/sidebar_blocks/list_posts.html' %}
+    <!-- end Posts List -->
+
+    <!-- About -->
+    <section class="blurb">
+        <h2>About</h2>
+        <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet
+            placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+        <ul class="actions">
+            <li><a href="#" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    <!-- end About -->
+
+    <!-- Footer Sidebar-->
+    {% include 'dyussh/includes/sidebar_blocks/sidebar_footer.html' %}
+    <!-- end Footer Sidebar-->
+
+</section>

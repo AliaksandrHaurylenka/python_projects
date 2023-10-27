@@ -1,0 +1,10 @@
+from django.db import models
+
+
+class News(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField(blank=True)
+    # sport_type = models.IntegerField() # Новость связанная с видом спорта
+    time_create = models.DateTimeField(auto_now_add=True)
+    time_update = models.DateTimeField(auto_now=True)
+    is_published = models.BooleanField(default=False)

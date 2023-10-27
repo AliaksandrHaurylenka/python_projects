@@ -1,0 +1,19 @@
+{% load static %}
+<section>
+    <ul class="posts">
+        {% for n in news %}
+        {% if n.is_published %}
+        <li>
+            <article>
+                <header>
+                    <h3><a href="{% url 'show_news' n.id %}">Lorem ipsum fermentum ut nisl vitae</a></h3>
+                    <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                </header>
+                <a href="{% url 'show_news' n.id %}" class="image"><img src="{% static 'dyussh/images/pic08.jpg' %}"
+                                                                        alt=""></a>
+            </article>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</section>

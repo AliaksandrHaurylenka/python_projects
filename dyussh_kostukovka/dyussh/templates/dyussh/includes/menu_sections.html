@@ -1,0 +1,5 @@
+<ul class="links">
+    {% for ms in menu_sports_section %}
+    <li><a href="{% url ms.url_name %}"><h3>{{ ms.title }}</h3></a></li>
+    {% endfor %}
+</ul>
