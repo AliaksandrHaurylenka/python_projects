@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1>{{ title }}</h1>
+<!--<h1>{{ title }}</h1>-->
 
 {% for n in news %}
 {% if n.is_published %}
@@ -12,23 +12,29 @@
 <article class="post">
     <header>
         <div class="title">
-            <h2><a href="{% url 'show_news' n.id %}">{{n.title}}</a></h2>
+            <h2><a href="{{ n.get_absolute_url }}">{{n.title}}</a></h2>
             <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
         </div>
         <div class="meta">
-            <time class="published" datetime="2015-11-01">November 1, 2015</time>
+<!--            <time class="published" datetime="2015-11-01">November 1, 2015</time>-->
+            <time class="published" datetime="2{{ n.time_create }}">{{ n.time_create }}</time>
             <a href="#" class="author"><span class="name">Jane Doe</span><img
                     src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>
         </div>
     </header>
-    <a href="{% url 'show_news' n.id %}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}"
-                                                                     alt=""/></a>
+
+    {% if news.photo %}
+    <a href="{{ n.get_absolute_url }}" class="image featured"><img src="{{ news.photo.url }}" alt=""></a>
+    {% else %}
+    <a href="{{ n.get_absolute_url }}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}" alt=""></a>
+    {% endif %}
+
     {% autoescape off %}
-    <p>{{n.content|linebreaks|truncatewords:50}}</p>
+    {{n.content|linebreaks|truncatewords:50}}
     {% endautoescape %}
     <footer>
         <ul class="actions">
-            <li><a href="{% url 'show_news' n.id %}" class="button big">Читать далее</a></li>
+            <li><a href="{{ n.get_absolute_url }}" class="button big">Читать далее</a></li>
         </ul>
         <ul class="stats">
             <li><a href="#">General</a></li>

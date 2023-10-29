@@ -6,11 +6,18 @@
         <!-- Mini Post -->
         <article class="mini-post">
             <header>
-                <h3><a href="{% url 'show_news' n.id %}">Vitae sed condimentum</a></h3>
-                <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                <h3><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h3>
+<!--                <time class="published" datetime="{{ n.time_create }}">October 20, 2015</time>-->
+                <time class="published" datetime="{{ n.time_create }}">{{ n.time_create }}</time>
                 <a href="#" class="author"><img src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>
             </header>
-            <a href="{% url 'show_news' n.id %}" class="image"><img src="{% static 'dyussh/images/pic04.jpg' %}" alt=""></a>
+
+            {% if news.photo %}
+            <a href="{{ n.get_absolute_url }}" class="image"><img src="{{ news.photo.url }}" alt=""></a>
+            {% else %}
+            <a href="{{ n.get_absolute_url }}" class="image"><img src="{% static 'dyussh/images/pic04.jpg' %}"
+                                                                           alt=""></a>
+            {% endif %}
         </article>
         <!-- end Mini Post -->
         {% endif %}

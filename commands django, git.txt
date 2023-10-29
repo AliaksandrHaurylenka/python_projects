@@ -5,8 +5,8 @@ django-admin startproject <name site> - создание нового сайта
 
 
 python manage.py runserver
-python manage.py makemigrations
-python manage.py migrate
+python manage.py makemigrations - создание новой миграции
+python manage.py migrate - запуск миграции
 python manage.py createsuperuser
 python manage.py startapp <name> - создание нового приложения
 py manage.py shell - переход в консоль shell

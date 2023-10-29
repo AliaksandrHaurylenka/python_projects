@@ -6,11 +6,18 @@
         <li>
             <article>
                 <header>
-                    <h3><a href="{% url 'show_news' n.id %}">Lorem ipsum fermentum ut nisl vitae</a></h3>
-                    <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                    <h3><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h3>
+<!--                    <time class="published" datetime="2015-10-20">October 20, 2015</time>-->
+                    <time class="published" datetime="{{ n.time_create }}">{{ n.time_create }}</time>
                 </header>
-                <a href="{% url 'show_news' n.id %}" class="image"><img src="{% static 'dyussh/images/pic08.jpg' %}"
-                                                                        alt=""></a>
+
+                {% if news.photo %}
+                <a href="{{ n.get_absolute_url }}" class="image"><img src="{{ news.photo.url }}" alt=""></a>
+                {% else %}
+                <a href="{{ n.get_absolute_url }}" class="image"><img src="{% static 'dyussh/images/pic08.jpg' %}"
+                                                                      alt=""></a>
+                {% endif %}
+
             </article>
         </li>
         {% endif %}

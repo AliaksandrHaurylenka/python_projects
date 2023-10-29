@@ -3339,7 +3339,7 @@
 		text-transform: uppercase;
 	}
 
-	body.single #footer {
+	#footer {
 		text-align: center;
 	}
 

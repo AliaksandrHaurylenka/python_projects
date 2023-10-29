@@ -1,6 +1,8 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+
+from dyussh.models import News
 
 menu = [{'title': "Новости", 'url_name': 'news'},
         {'title': "Объявления", 'url_name': 'ads'},
@@ -43,21 +45,25 @@ news_cats_db = [
 
 
 def index(request):
+    all_news = News.objects.filter(is_published=1)
+
     data = {
         'title': 'Дюсш-Костюковка',
         'menu': menu,
         'menu_sports_section': menu_sports_section,
-        'news': data_db,
+        'news': all_news,
     }
     return render(request, 'dyussh/index.html', context=data)
 
 
 def news(request):
+    all_news = News.objects.filter(is_published=1)
+
     data = {
         'title': 'Спортивные события',
         'menu': menu,
         'menu_sports_section': menu_sports_section,
-        'news': data_db,
+        'news': all_news,
     }
     return render(request, 'dyussh/news.html', context=data)
 
@@ -74,8 +80,20 @@ def news_cat_slug(request, cat_id, news_cat):
     return render(request, 'dyussh/index.html', context=data)
 
 
-def show_news(request, news_id):
-    return HttpResponse(f'<h3>Отобразить новость с id={news_id}</h3>')
+def show_news(request, news_slug):
+    all_news = News.objects.filter(is_published=1)
+    one_news = get_object_or_404(News, slug=news_slug)
+
+    data = {
+        # 'title': post.title,
+        'title': one_news,
+        'menu': menu,
+        'news': all_news,  # sidebar
+        'one_news': one_news,
+        'cat_selected': 1,
+    }
+
+    return render(request, 'dyussh/one_news.html', context=data)
 
 
 def history(request):

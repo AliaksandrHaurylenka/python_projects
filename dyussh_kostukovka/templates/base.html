@@ -21,17 +21,18 @@
     <!-- Header -->
     <header id="header">
         <h1><a href="{% url 'home' %}">Дюсш-Костюковка</a></h1>
+        <!-- Menu left -->
         <nav class="links">
             <ul>
                 {% for m in menu %}
-                {% if not forloop.last %}
-                <li>{% else %}
-                <li class="last">{% endif %}
+                <li>
                     <a href="{% url m.url_name %}">{{m.title}}</a>
                 </li>
                 {% endfor %}
             </ul>
         </nav>
+
+        <!-- Menu right -->
         <nav class="main">
             <ul>
                 <li class="search">
