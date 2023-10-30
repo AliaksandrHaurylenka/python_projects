@@ -7,7 +7,6 @@
 <!--<h1>{{ title }}</h1>-->
 
 {% for n in news %}
-{% if n.is_published %}
 <!-- Post -->
 <article class="post">
     <header>
@@ -44,7 +43,6 @@
     </footer>
 </article>
 <!-- end Post -->
-{% endif %}
 {% endfor %}
 
 <!-- Pagination -->

@@ -4,6 +4,14 @@ import dyussh.views as views
 register = template.Library()
 
 
+@register.inclusion_tag('dyussh/inclusions-tags/main_menu.html')
+# def main_menu(menu_selected=0):
+def main_menu():
+    menu = views.menu
+    # return {"main_menu": menu, "menu_selected": menu_selected}
+    return {"main_menu": menu}
+
+
 @register.inclusion_tag('dyussh/inclusions-tags/list_news_categories.html')
 def show_news_categories(cat_selected=0):
     cats = views.news_cats_db

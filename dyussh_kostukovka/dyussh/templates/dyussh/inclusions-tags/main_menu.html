@@ -1,0 +1,15 @@
+<nav class="links">
+    <ul>
+<!--        {% for m in menu %}-->
+<!--        {% if m.id == menu_selected %}-->
+<!--        <li class="selected">{{menu.title}}</li>-->
+<!--        {% else %}-->
+<!--        <li><a href="{% url m.url_name %}">{{m.title}}</a></li>-->
+<!--        {% endif %}-->
+<!--        {% endfor %}-->
+
+        {% for m in main_menu %}
+        <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
