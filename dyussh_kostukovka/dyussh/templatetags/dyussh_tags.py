@@ -5,11 +5,9 @@ register = template.Library()
 
 
 @register.inclusion_tag('dyussh/inclusions-tags/main_menu.html')
-# def main_menu(menu_selected=0):
-def main_menu():
+def main_menu(menu_selected=''):
     menu = views.menu
-    # return {"main_menu": menu, "menu_selected": menu_selected}
-    return {"main_menu": menu}
+    return {"main_menu": menu, "menu_selected": menu_selected}
 
 
 @register.inclusion_tag('dyussh/inclusions-tags/list_news_categories.html')

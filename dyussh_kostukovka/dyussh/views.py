@@ -49,6 +49,7 @@ def news(request):
         'menu': menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,
+        'menu_selected': 'news',
     }
     return render(request, 'dyussh/news.html', context=data)
 
@@ -60,6 +61,7 @@ def ads(request):
         'menu': menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
+        'menu_selected': 'ads',
     }
     return render(request, 'dyussh/ads.html', context=data)
 
@@ -71,6 +73,7 @@ def history(request):
         'menu': menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
+        'menu_selected': 'history',
     }
     return render(request, 'dyussh/history.html', context=data)
 
@@ -82,6 +85,7 @@ def contacts(request):
         'menu': menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
+        'menu_selected': 'contacts',
     }
     return render(request, 'dyussh/contacts.html', context=data)
 
@@ -108,7 +112,7 @@ def show_news(request, news_slug):
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
         'one_news': one_news,
-        'cat_selected': 1,
+        # 'cat_selected': 1,
     }
 
     return render(request, 'dyussh/one_news.html', context=data)

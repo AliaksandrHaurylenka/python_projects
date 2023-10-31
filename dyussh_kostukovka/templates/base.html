@@ -8,6 +8,7 @@
     <!--[if lte IE 8]>
     <script src="{% static 'dyussh/js/ie/html5shiv.js' %}"></script><![endif]-->
     <link type="text/css" href="{% static 'dyussh/css/main.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'dyussh/css/my_style.css' %}" rel="stylesheet">
     <!--[if lte IE 9]>
     <link rel="stylesheet" href="dyussh/css/ie9.css"><![endif]-->
     <!--[if lte IE 8]>
@@ -22,7 +23,7 @@
     <header id="header">
         <h1><a href="{% url 'home' %}">Дюсш-Костюковка</a></h1>
         <!-- Menu left -->
-        {% main_menu %} <!-- пользовательский тег 'templatetags/dyussh_tags.py' -->
+        {% main_menu menu_selected %} <!-- пользовательский тег 'templatetags/dyussh_tags.py' -->
 
         <!-- Menu right search -->
         {% include 'dyussh/includes/search.html' %}
