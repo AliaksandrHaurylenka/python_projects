@@ -2,6 +2,14 @@ from django.db import models
 from django.urls import reverse
 
 
+class MainMenu(models.Model):
+    title = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=20, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.title
+
+
 class PublishedModel(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_published=News.Status.PUBLISHED)
@@ -16,10 +24,11 @@ class News(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     # slug = models.SlugField(max_length=255, db_index=True, blank=True, default='')
     content = models.TextField(blank=True)
-    # sport_type = models.IntegerField() # Новость связанная с видом спорта
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
+    news_sport_type = models.ForeignKey('NewsSportType', on_delete=models.PROTECT)
+    # Новость связанная с видом спорта
 
     objects = models.Manager()
     published = PublishedModel()
@@ -35,3 +44,11 @@ class News(models.Model):
 
     def get_absolute_url(self):
         return reverse('show_news', kwargs={'news_slug': self.slug})
+
+
+class NewsSportType(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name

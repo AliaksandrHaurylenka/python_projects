@@ -2,51 +2,47 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from dyussh.models import News
+from dyussh.models import News, NewsSportType, MainMenu
 
-menu = [
-    {'id': 1, 'title': "Новости", 'url_name': 'news'},
-    {'id': 2, 'title': "Объявления", 'url_name': 'ads'},
-    {'id': 3, 'title': "Контакты", 'url_name': 'contacts'},
-    {'id': 4, 'title': "История", 'url_name': 'history'},
-    # {'title': "Войти", 'url_name': 'login'},
-]
+# menu = [
+#     {'id': 1, 'title': "Новости", 'url_name': 'news'},
+#     {'id': 2, 'title': "Объявления", 'url_name': 'ads'},
+#     {'id': 3, 'title': "Контакты", 'url_name': 'contacts'},
+#     {'id': 4, 'title': "История", 'url_name': 'history'},
+#     # {'title': "Войти", 'url_name': 'login'},
+# ]
 
-menu_sports_section = [
-    {'title': "Плавание", 'url_name': 'swimming'},
-    {'title': "Борьба", 'url_name': 'wrestling'},
-    {'title': "Легкая атлетика", 'url_name': 'athletics'},
-    {'title': "Тяжелая атлетика", 'url_name': 'weightlifting'},
-    {'title': "Футбол", 'url_name': 'football'},
-    {'title': "Волейбол", 'url_name': 'volleyball'},
-]
 
-news_cats_db = [
-    {'id': 1, 'slug': 'swimming', 'name': 'Плавание'},
-    {'id': 2, 'slug': 'wrestling', 'name': 'Борьба'},
-    {'id': 3, 'slug': 'athletics', 'name': 'Легкая атлетика'},
-    {'id': 4, 'slug': 'weightlifting', 'name': 'Тяжелая атлетика'},
-    {'id': 5, 'slug': 'football', 'name': 'Футбол'},
-    {'id': 6, 'slug': 'volleyball', 'name': 'Волейбол'},
-]
+# def sport_type():
+#     menu_sports_section = NewsSportType.objects.all()
+#     data = {
+#         'menu_sports_section': menu_sports_section,
+#     }
+#     return data
 
 
 def index(request):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     data = {
         'title': 'Дюсш-Костюковка',
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
+        # 'menu_sports_section': sport_type(),
         'news': all_news,  # sidebar
     }
+    # sport_type()
     return render(request, 'dyussh/index.html', context=data)
 
 
 def news(request):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     data = {
         'title': 'Спортивные события',
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,
         'menu_selected': 'news',
@@ -55,10 +51,12 @@ def news(request):
 
 
 def ads(request):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     data = {
         'title': 'Объявления Дюсш-Костюковка',
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
         'menu_selected': 'ads',
@@ -67,10 +65,12 @@ def ads(request):
 
 
 def history(request):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     data = {
         'title': 'История Дюсш-Костюковка',
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
         'menu_selected': 'history',
@@ -79,10 +79,12 @@ def history(request):
 
 
 def contacts(request):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     data = {
         'title': 'Контакты Дюсш-Костюковка',
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
         'menu_selected': 'contacts',
@@ -91,10 +93,11 @@ def contacts(request):
 
 
 def news_cat_slug(request, cat_id, news_cat):
+    all_news = News.published.all()
     data = {
         'title': 'Новости по категориям',
-        'menu': menu,
-        # 'posts': data_db,
+        # 'menu': main_menu,
+        'news': all_news,  # sidebar
         'cat_selected': cat_id,
         'news_cat': news_cat,
     }
@@ -103,12 +106,14 @@ def news_cat_slug(request, cat_id, news_cat):
 
 
 def show_news(request, news_slug):
+    main_menu = MainMenu.objects.all()
     all_news = News.published.all()
+    menu_sports_section = NewsSportType.objects.all()
     one_news = get_object_or_404(News, slug=news_slug)
     data = {
         # 'title': post.title,
         'title': one_news,
-        'menu': menu,
+        'menu': main_menu,
         'menu_sports_section': menu_sports_section,
         'news': all_news,  # sidebar
         'one_news': one_news,

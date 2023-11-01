@@ -1,4 +1,5 @@
 {% load static %}
+{% load dyussh_tags %}
 <section id="sidebar">
 
     <!-- Intro -->
@@ -13,11 +14,15 @@
 
     <!-- Mini Posts -->
     {% include 'dyussh/includes/sidebar_blocks/mini_posts.html' %}
-    <!-- end Mini Posts -->
+
 
     <!-- Posts List -->
     {% include 'dyussh/includes/sidebar_blocks/list_posts.html' %}
-    <!-- end Posts List -->
+
+
+    <!-- News Sport Type -->
+    {% show_news_categories cat_selected %}
+
 
     <!-- About -->
     <section class="blurb">

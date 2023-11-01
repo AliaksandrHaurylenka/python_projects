@@ -15,10 +15,14 @@ class Women(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     # slug = models.SlugField(max_length=255, db_index=True, blank=True, default='')
+    # добавление поля, когда таблица уже существует
     content = models.TextField(blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
+    # cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
+    # можно поле оставить с пустым значением
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT)
 
     objects = models.Manager()
     published = PublishedModel()
@@ -34,3 +38,11 @@ class Women(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_slug': self.slug})
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
