@@ -7,3 +7,14 @@ li.selected {
     letter-spacing: 0.25em;
     text-transform: uppercase;
 }
+
+.sidebar_block_name {
+    color: #3c3b3b;
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    line-height: 1.65;
+    margin: 0 0 1em 0;
+    text-transform: uppercase;
+    list-style-type: none;
+}

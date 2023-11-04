@@ -1,7 +1,10 @@
-{% for cat in cats %}
-  {% if cat.id == cat_selected %}
+<ul class="links">
+    <li class="sidebar_block_name">Новости по видам спорта</li>
+    {% for cat in cats %}
+    {% if cat.id == cat_selected %}
     <li class="selected">{{cat.name}}</li>
-  {% else %}
+    {% else %}
     <li><a href="{% url 'news_cat' cat.id cat.slug %}">{{cat.name}}</a></li>
-  {% endif %}
-{% endfor %}
+    {% endif %}
+    {% endfor %}
+</ul>
