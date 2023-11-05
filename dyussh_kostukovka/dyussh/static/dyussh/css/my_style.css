@@ -18,3 +18,7 @@ li.selected {
     text-transform: uppercase;
     list-style-type: none;
 }
+
+/*.post > header .meta .published {
+    text-transform: lowercase;*/
+

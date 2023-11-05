@@ -15,8 +15,8 @@
             <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
         </div>
         <div class="meta">
-<!--            <time class="published" datetime="2015-11-01">November 1, 2015</time>-->
-            <time class="published" datetime="2{{ n.time_create }}">{{ n.time_create }}</time>
+
+            <time class="published" datetime="{{n.time_create|date:'F d, Y'}}">{{n.time_create|date:'F d, Y'}}</time>
             <a href="#" class="author"><span class="name">Jane Doe</span><img
                     src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>
         </div>

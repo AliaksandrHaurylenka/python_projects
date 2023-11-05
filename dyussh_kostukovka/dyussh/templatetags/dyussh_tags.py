@@ -12,6 +12,6 @@ def main_menu(menu_selected=''):
 
 
 @register.inclusion_tag('dyussh/inclusions-tags/list_news_categories.html')
-def show_news_categories(cat_selected=0):
+def show_news_categories(cat_selected_id=0):
     cats = NewsSportType.objects.all()
-    return {"cats": cats, "cat_selected": cat_selected}
+    return {"cats": cats, "cat_selected": cat_selected_id}

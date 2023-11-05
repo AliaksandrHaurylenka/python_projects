@@ -50,5 +50,8 @@ class NewsSportType(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
 
+    def get_absolute_url(self):
+        return reverse('news_cat', kwargs={'news_cat_slug': self.slug})
+
     def __str__(self):
         return self.name

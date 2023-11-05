@@ -1,7 +1,7 @@
 <nav class="links">
     <ul>
         {% for m in main_menu %}
-        {% if m.url_name == menu_selected %}
+        {% if m.slug == menu_selected %}
         <li class="selected">{{m.title}}</li>
         {% else %}
         <li><a href="{% url m.slug %}">{{m.title}}</a></li>

@@ -57,17 +57,6 @@ def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
-# def show_category(request, cat_id):
-#     data = {
-#         'title': 'Отображение по рубрикам',
-#         'menu': menu,
-#         'posts': Women.published.all(),
-#         'cat_selected': cat_id,
-#     }
-#
-#     return render(request, 'women/index.html', context=data)
-
-
 def show_category(request, cat_slug):
     category = get_object_or_404(Category, slug=cat_slug)
     posts = Women.published.filter(cat_id=category.pk)
