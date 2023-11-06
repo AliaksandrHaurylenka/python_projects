@@ -2,7 +2,7 @@
     <ul>
         {% for m in main_menu %}
         {% if m.slug == menu_selected %}
-        <li class="selected">{{m.title}}</li>
+        <li class="selected"><span>{{m.title}}</span></li>
         {% else %}
         <li><a href="{% url m.slug %}">{{m.title}}</a></li>
         {% endif %}

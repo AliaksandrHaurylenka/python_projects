@@ -1,11 +1,21 @@
-li.selected {
+.selected span {
     color: #2ebaae !important;
-    border-bottom: 0;
+    /*border-bottom: 0;*/
     font-family: "Raleway", Helvetica, sans-serif;
     font-size: 0.7em;
-    font-weight: 400;
+    /*font-weight: 400;*/
     letter-spacing: 0.25em;
     text-transform: uppercase;
+}
+
+.disabled {
+    cursor: default !important;
+}
+
+li.selected-cat-sidebar {
+    color: #2ebaae !important;
+    font-size: 1em;
+    text-transform: none;
 }
 
 .sidebar_block_name {
@@ -18,7 +28,4 @@ li.selected {
     text-transform: uppercase;
     list-style-type: none;
 }
-
-/*.post > header .meta .published {
-    text-transform: lowercase;*/
 

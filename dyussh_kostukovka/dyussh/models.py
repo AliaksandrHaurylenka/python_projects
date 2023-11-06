@@ -45,6 +45,9 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse('show_news', kwargs={'news_slug': self.slug})
 
+    def get_absolute_url_category(self):
+        return reverse('news_cat', kwargs={'news_cat_slug': self.news_sport_type.slug})
+
 
 class NewsSportType(models.Model):
     name = models.CharField(max_length=50)

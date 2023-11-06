@@ -11,8 +11,8 @@
 <article class="post">
     <header>
         <div class="title">
-            <h2><a href="{{ n.get_absolute_url }}">{{n.title}}</a></h2>
-            <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+            <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
+            <p>Категория: <a href="{{n.news_sport_type.slug}}">{{n.news_sport_type.name}}</a></p>
         </div>
         <div class="meta">
 
@@ -23,9 +23,9 @@
     </header>
 
     {% if news.photo %}
-    <a href="{{ n.get_absolute_url }}" class="image featured"><img src="{{ news.photo.url }}" alt=""></a>
+    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{{news.photo.url}}" alt=""></a>
     {% else %}
-    <a href="{{ n.get_absolute_url }}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}" alt=""></a>
+    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}" alt=""></a>
     {% endif %}
 
     {% autoescape off %}

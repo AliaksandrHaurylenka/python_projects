@@ -7,14 +7,14 @@
         <article class="mini-post">
             <header>
                 <h3><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h3>
-                <time class="published" datetime="{{ n.time_create }}">{{ n.time_create }}</time>
+                <time class="published" datetime="{{n.time_create|date:'F d, Y'}}">{{n.time_create|date:'F d, Y'}}</time>
                 <a href="#" class="author"><img src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>
             </header>
 
             {% if news.photo %}
-            <a href="{{ n.get_absolute_url }}" class="image"><img src="{{ news.photo.url }}" alt=""></a>
+            <a href="{{n.get_absolute_url}}" class="image"><img src="{{news.photo.url}}" alt=""></a>
             {% else %}
-            <a href="{{ n.get_absolute_url }}" class="image"><img src="{% static 'dyussh/images/pic04.jpg' %}"
+            <a href="{{n.get_absolute_url}}" class="image"><img src="{% static 'dyussh/images/pic04.jpg' %}"
                                                                            alt=""></a>
             {% endif %}
         </article>

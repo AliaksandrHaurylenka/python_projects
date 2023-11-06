@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
 <!-- Post -->
 <article class="post">
     <header>
         <div class="title">
             <h2>{{one_news.title}}</h2>
-            <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+            <p>Категория: <a href="{{one_news.get_absolute_url_category}}">{{one_news.news_sport_type.name}}</a></p>
         </div>
         <div class="meta">
             <time class="published" datetime="{{one_news.time_create|date:'F d, Y'}}">{{one_news.time_create|date:"F d, Y"}}</time>

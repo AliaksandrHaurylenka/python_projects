@@ -2,7 +2,7 @@
     <li class="sidebar_block_name">Новости по видам спорта</li>
     {% for cat in cats %}
     {% if cat.id == cat_selected %}
-    <li class="selected">{{cat.name}}</li>
+    <li class="selected-cat-sidebar">{{cat.name}}</li>
     {% else %}
     <li><a href="{{ cat.get_absolute_url }}">{{cat.name}}</a></li>
     {% endif %}

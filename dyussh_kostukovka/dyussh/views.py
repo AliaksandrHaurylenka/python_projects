@@ -92,6 +92,7 @@ def show_category(request, news_cat_slug):
         'news': all_news,  # sidebar
         'cat_selected': category.pk,
         'news_sidebar': news_sidebar,
+        "menu_selected": 'news',
     }
 
     return render(request, 'dyussh/news.html', context=data)
@@ -102,6 +103,7 @@ def show_news(request, news_slug):
     news_sidebar = News.published.all()
     menu_sports_section = NewsSportType.objects.all()
     one_news = get_object_or_404(News, slug=news_slug)
+
     data = {
         # 'title': post.title,
         'title': one_news,
@@ -109,7 +111,8 @@ def show_news(request, news_slug):
         'menu_sports_section': menu_sports_section,
         'news_sidebar': news_sidebar,  # sidebar
         'one_news': one_news,
-        # 'cat_selected': 1,
+        "menu_selected": 'news',
+        'cat_selected': one_news.pk,
     }
 
     return render(request, 'dyussh/one_news.html', context=data)
