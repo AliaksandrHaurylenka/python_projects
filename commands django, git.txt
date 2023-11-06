@@ -14,9 +14,9 @@ python manage.py shell_plus --print-sql - после добавления зап
 											распечатка sql-запроса
 
 
-git branch имя_ветки
+git branch <имя_ветки>
 git branch -M <name branch> - новое имя ветки на которой находитесь
-git checkout имя_ветки
-git checkout -b имя_ветки - сразу перейти на созданную ветку
-git merge имя_ветки - объединить ветки
-git checkout -b <название ветки> origin/<название ветки>
+git checkout <имя_ветки> - перейти в ветку
+git checkout -b <имя_ветки> - сразу перейти на созданную ветку
+git merge <имя_ветки> - объединить ветки
+git checkout -b <название ветки> origin/<название ветки> - загрузить ветку в репозиторий
