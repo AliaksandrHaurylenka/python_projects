@@ -2,7 +2,11 @@
     <ul>
         {% for m in main_menu %}
         {% if m.slug == menu_selected %}
+        {% if forloop.first %} <!-- первый элемент цикла -->
+        <li class="selected"><a href="{% url m.slug %}">{{m.title}}</a></li>
+        {% else %}
         <li class="selected"><span>{{m.title}}</span></li>
+        {% endif %}
         {% else %}
         <li><a href="{% url m.slug %}">{{m.title}}</a></li>
         {% endif %}

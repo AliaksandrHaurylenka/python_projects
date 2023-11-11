@@ -23,7 +23,8 @@
                     {% if not forloop.last %}
                     <li>{% else %}
                     <li class="last">{% endif %}
-                        <a href="{% url m.url_name %}">{{m.title}}</a></li>
+                        <a href="{% url m.url_name %}">{{m.title}}</a>
+                    </li>
                     {% endfor %}
                 </ul>
                 <div class="clear"></div>
@@ -36,7 +37,7 @@
                     <!-- Sidebar слева -->
                     <td valign="top" class="left-chapters">
                         <ul id="leftchapters">
-                            {% if cat_selected == 0 or cat_selected is None %}
+                            {% if cat_selected == 0 %}
                             <li class="selected">Все категории</li>
                             {% else %}
                             <li><a href="{% url 'home' %}">Все категории</a></li>
@@ -50,6 +51,8 @@
                                    href="https://www.youtube.com/channel/UClJzWfGWuGJL2t-3dYKcHTA/playlists"
                                    target="_blank" rel="nofollow"></a>
                             </li>
+
+                            <li>{% show_all_tags %}</li>
                         </ul>
                     </td>
                     <!-- Конец Sidebar'а -->

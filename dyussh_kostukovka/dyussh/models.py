@@ -29,6 +29,7 @@ class News(models.Model):
     is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
     news_sport_type = models.ForeignKey('NewsSportType', on_delete=models.PROTECT)
     # Новость связанная с видом спорта
+    tags = models.ManyToManyField('TagNews', blank=True, related_name='tags')
 
     objects = models.Manager()
     published = PublishedModel()
@@ -58,3 +59,11 @@ class NewsSportType(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TagNews(models.Model):
+    tag = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=100, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.tag

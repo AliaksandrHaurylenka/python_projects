@@ -1,3 +1,4 @@
+.selected a,
 .selected span {
     color: #2ebaae !important;
     /*border-bottom: 0;*/
