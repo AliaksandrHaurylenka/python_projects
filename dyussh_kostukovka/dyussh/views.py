@@ -161,11 +161,14 @@ def volleyball(request):
 def show_tag_news_list(request, tag_slug):
     main_menu = MainMenu.objects.all()
     tag = get_object_or_404(TagNews, slug=tag_slug)
-    news = tag.tags.filter(is_published=News.Status.PUBLISHED)
+    news_tags = tag.tags.filter(is_published=News.Status.PUBLISHED)
+    news_sidebar = News.published.all()
     data = {
         'title': f'Тег: {tag.tag}',
         'menu': main_menu,
-        'news': news,
+        "menu_selected": 'news',
+        'news': news_tags,
+        'news_sidebar': news_sidebar,  # sidebar
         # 'cat_selected': None,
     }
 

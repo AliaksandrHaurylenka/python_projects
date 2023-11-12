@@ -17,10 +17,3 @@ def show_news_categories(cat_selected_id=0, menu_selected=''):
     return {"cats": cats, "cat_selected": cat_selected_id, "menu_selected": menu_selected}
 
 
-@register.inclusion_tag('dyussh/inclusions-tags/tag_news.html')
-# def tag_news(menu_selected=''):
-#     tag = TagNews.objects.all()
-#     return {"tag_news": tag, "menu_selected": menu_selected}
-
-def tag_news():
-    return {"tag_news": TagNews.objects.all()}

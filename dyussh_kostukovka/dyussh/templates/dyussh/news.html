@@ -13,8 +13,16 @@
         <div class="title">
             <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
             {% url 'news' as news_url %} <!-- получение url-страницы и далее сравнение -->
+            {% url 'tags_news' as tag_news_url %}
+
             {% if request.path == news_url %}
             <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+
+<!--            Решить вопрос с тегами-->
+            {% elif request.path == tag_news_url %}
+            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            <p>Тег: {{n.tagnews_id}}</p>
+
             {% else %}
             <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
             {% endif %}
