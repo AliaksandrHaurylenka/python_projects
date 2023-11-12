@@ -2,7 +2,8 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from dyussh.models import News, NewsSportType, MainMenu
+from dyussh.models import News, NewsSportType, MainMenu, TagNews
+
 
 # def sport_type():
 #     menu_sports_section = NewsSportType.objects.all()
@@ -112,7 +113,7 @@ def show_news(request, news_slug):
         'news_sidebar': news_sidebar,  # sidebar
         'one_news': one_news,
         "menu_selected": 'news',
-        'cat_selected': one_news.pk,
+        'cat_selected': one_news.news_sport_type_id,
     }
 
     return render(request, 'dyussh/one_news.html', context=data)
@@ -155,3 +156,18 @@ def football(request):
 
 def volleyball(request):
     return HttpResponse(f'<h1>Волейбол</h1')
+
+
+def show_tag_news_list(request, tag_slug):
+    main_menu = MainMenu.objects.all()
+    tag = get_object_or_404(TagNews, slug=tag_slug)
+    news = tag.tags.filter(is_published=News.Status.PUBLISHED)
+    data = {
+        'title': f'Тег: {tag.tag}',
+        'menu': main_menu,
+        'news': news,
+        # 'cat_selected': None,
+    }
+
+    return render(request, 'dyussh/news.html', context=data)
+

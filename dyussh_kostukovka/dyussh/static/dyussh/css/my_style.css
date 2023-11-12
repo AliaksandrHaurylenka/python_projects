@@ -1,12 +1,14 @@
 .selected a,
 .selected span {
     color: #2ebaae !important;
-    /*border-bottom: 0;*/
     font-family: "Raleway", Helvetica, sans-serif;
     font-size: 0.7em;
-    /*font-weight: 400;*/
     letter-spacing: 0.25em;
     text-transform: uppercase;
+}
+
+p.selected span {
+    font-size: 1em;
 }
 
 .disabled {

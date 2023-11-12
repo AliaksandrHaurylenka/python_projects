@@ -12,10 +12,14 @@
     <header>
         <div class="title">
             <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
-            <p>Категория: <a href="{{n.news_sport_type.slug}}">{{n.news_sport_type.name}}</a></p>
+            {% url 'news' as news_url %} <!-- получение url-страницы и далее сравнение -->
+            {% if request.path == news_url %}
+            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            {% else %}
+            <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
+            {% endif %}
         </div>
         <div class="meta">
-
             <time class="published" datetime="{{n.time_create|date:'F d, Y'}}">{{n.time_create|date:'F d, Y'}}</time>
             <a href="#" class="author"><span class="name">Jane Doe</span><img
                     src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>

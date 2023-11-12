@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load dyussh_tags %}
+
 
 {% block content %}
 <!-- Post -->
@@ -10,7 +12,8 @@
             <p>Категория: <a href="{{one_news.get_absolute_url_category}}">{{one_news.news_sport_type.name}}</a></p>
         </div>
         <div class="meta">
-            <time class="published" datetime="{{one_news.time_create|date:'F d, Y'}}">{{one_news.time_create|date:"F d, Y"}}</time>
+            <time class="published" datetime="{{one_news.time_create|date:'F d, Y'}}">{{one_news.time_create|date:'F d, Y'}}
+            </time>
             <a href="#" class="author"><span class="name">Jane Doe</span><img
                     src="{% static 'dyussh/images/avatar.jpg' %}" alt=""/></a>
         </div>
@@ -27,6 +30,7 @@
     {% endautoescape %}
 
     <footer>
+        {% tag_news %}
         <ul class="stats">
             <li><a href="#">General</a></li>
             <li><a href="#" class="icon fa-heart">28</a></li>
