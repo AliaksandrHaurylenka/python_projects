@@ -49,6 +49,9 @@ class News(models.Model):
     def get_absolute_url_category(self):
         return reverse('news_cat', kwargs={'news_cat_slug': self.news_sport_type.slug})
 
+    def get_absolute_url_tag(self):
+        return reverse('tags_news', kwargs={'tag_slug': self.tags.get().slug})
+
 
 class NewsSportType(models.Model):
     name = models.CharField(max_length=50)
@@ -66,7 +69,8 @@ class TagNews(models.Model):
     slug = models.SlugField(max_length=100, unique=True, db_index=True)
 
     def __str__(self):
-        return self.tag
+        # return self.slug
+        return self.slug, self.tag
 
     def get_absolute_url(self):
         return reverse('tags_news', kwargs={'tag_slug': self.slug})

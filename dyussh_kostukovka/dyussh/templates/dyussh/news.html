@@ -12,11 +12,12 @@
     <header>
         <div class="title">
             <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
-            {% url 'news' as news_url %} <!-- получение url-страницы и далее сравнение -->
+            {% url 'news' as news_all_url %} <!-- получение url-страницы и далее сравнение -->
             {% url 'tags_news' as tag_news_url %}
 
-            {% if request.path == news_url %}
+            {% if request.path == news_all_url %}
             <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
 
 <!--            Решить вопрос с тегами-->
             {% elif request.path == tag_news_url %}
