@@ -13,20 +13,31 @@
         <div class="title">
             <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
             {% url 'news' as news_all_url %} <!-- получение url-страницы и далее сравнение -->
-            {% url 'tags_news' as tag_news_url %}
+
+
 
             {% if request.path == news_all_url %}
             <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
             <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
-
-<!--            Решить вопрос с тегами-->
-            {% elif request.path == tag_news_url %}
-            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-            <p>Тег: {{n.tagnews_id}}</p>
-
-            {% else %}
+            {% elif  request.path == n.get_absolute_url_category %}
             <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
+            <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
+            {% elif request.path == n.get_absolute_url_tag %}
+            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            <p class="selected">Тег: <span>{{n.tags.get.tag}}</span></p>
+            {% else %}
+            <p>Реши меня</p>
             {% endif %}
+
+            {% comment %}
+            {{news_all_url}}
+            {{n.get_absolute_url_tag}}
+            {{n.get_absolute_url_category}}
+            {% endcomment %}
+
+
+
+
         </div>
         <div class="meta">
             <time class="published" datetime="{{n.time_create|date:'F d, Y'}}">{{n.time_create|date:'F d, Y'}}</time>
@@ -38,7 +49,8 @@
     {% if news.photo %}
     <a href="{{n.get_absolute_url}}" class="image featured"><img src="{{news.photo.url}}" alt=""></a>
     {% else %}
-    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}" alt=""></a>
+    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}"
+                                                                 alt=""></a>
     {% endif %}
 
     {% autoescape off %}
