@@ -9,7 +9,12 @@
         <div class="title">
             <h2>{{one_news.title}}</h2>
             <p>Категория: <a href="{{one_news.get_absolute_url_category}}">{{one_news.news_sport_type.name}}</a></p>
-            <p>Тег: <a href="{{one_news.get_absolute_url_tag}}">{{one_news.tags.get.tag}}</a></p>
+            <p>Тег:
+                {% comment %}
+                <a href="{{one_news.get_absolute_url_tag}}">{{one_news.tags.get.tag}}</a>
+                {% endcomment %}
+                {% include 'dyussh/includes/tags_news_header.html' %}
+            </p>
         </div>
         <div class="meta">
             <time class="published" datetime="{{one_news.time_create|date:'F d, Y'}}">{{one_news.time_create|date:'F d, Y'}}
@@ -28,6 +33,7 @@
     {% autoescape off %}
     {{ one_news.content|linebreaks }}
     {% endautoescape %}
+
 
     <footer>
         <ul class="stats">

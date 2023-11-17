@@ -106,7 +106,6 @@ def show_news(request, news_slug):
     one_news = get_object_or_404(News, slug=news_slug)
 
     data = {
-        # 'title': post.title,
         'title': one_news,
         'menu': main_menu,
         'menu_sports_section': menu_sports_section,

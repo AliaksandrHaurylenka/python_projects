@@ -15,11 +15,36 @@
             {% url 'news' as news_all_url %} <!-- получение url-страницы и далее сравнение -->
 
 
+            {% if request.path == news_all_url %}
+            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            <p>Тег:
+                {% include 'dyussh/includes/main_tags_news_header.html' %}
+            </p>
+            {% elif request.path == n.get_absolute_url_category %}
+            <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
+            <p>Тег:
+                {% include 'dyussh/includes/main_tags_news_header.html' %}
+            </p>
+            {% elif request.path == n.get_absolute_url_tag %}
+            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
+            <p class="selected">Тег:
+                <!-- Теги -->
+                {% with n.tags.all as tags_news %}
+                {% if tags_news %}
+                {% for t in tags_news %}
+                <span>{{t.tag}}</span>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </p>
+            {% endif %}
 
+
+            {% comment %}
             {% if request.path == news_all_url %}
             <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
             <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
-            {% elif  request.path == n.get_absolute_url_category %}
+            {% elif request.path == n.get_absolute_url_category %}
             <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
             <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
             {% elif request.path == n.get_absolute_url_tag %}
@@ -28,14 +53,13 @@
             {% else %}
             <p>Реши меня</p>
             {% endif %}
+            {% endcomment %}
 
             {% comment %}
             {{news_all_url}}
             {{n.get_absolute_url_tag}}
             {{n.get_absolute_url_category}}
             {% endcomment %}
-
-
 
 
         </div>

@@ -1,0 +1,8 @@
+<!-- Теги -->
+{% with n.tags.all as tags_news %}
+{% if tags_news %}
+{% for t in tags_news %}
+<a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+{% endfor %}
+{% endif %}
+{% endwith %}

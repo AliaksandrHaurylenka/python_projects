@@ -2,7 +2,7 @@
 {% with one_news.tags.all as tags_news %}
 {% if tags_news %}
     {% for t in tags_news %}
-    <li><a href="{{t.get_absolute_url}}">{{t.tag}}</a></li>
+    <a href="{{t.get_absolute_url}}">{{t.tag}}</a>
     {% endfor %}
 {% endif %}
 {% endwith %}
