@@ -1,0 +1,8 @@
+{% load static %}
+
+{% if news.photo %}
+<a href="{{n.get_absolute_url}}" class="image featured"><img src="{{news.photo.url}}" alt=""></a>
+{% else %}
+<a href="{{n.get_absolute_url}}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}"
+                                                             alt=""></a>
+{% endif %}

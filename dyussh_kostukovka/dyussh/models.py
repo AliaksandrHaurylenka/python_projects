@@ -51,6 +51,7 @@ class News(models.Model):
 
     def get_absolute_url_tag(self):
         return reverse('tags_news', kwargs={'tag_slug': self.tags.get().slug})
+        # return reverse('tags_news', kwargs={'tag_slug': self.tags.all().slug})
 
 
 class NewsSportType(models.Model):

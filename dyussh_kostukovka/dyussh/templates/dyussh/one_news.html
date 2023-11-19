@@ -13,7 +13,7 @@
                 {% comment %}
                 <a href="{{one_news.get_absolute_url_tag}}">{{one_news.tags.get.tag}}</a>
                 {% endcomment %}
-                {% include 'dyussh/includes/tags_news_header.html' %}
+                {% include 'dyussh/includes/news_posts/tags_news_header.html' %}
             </p>
         </div>
         <div class="meta">
@@ -37,7 +37,7 @@
 
     <footer>
         <ul class="stats">
-            {% include 'dyussh/includes/tags_news.html' %}
+            {% include 'dyussh/includes/news_posts/tags_news.html' %}
             <li><a href="#" class="icon fa-heart">28</a></li>
             <li><a href="#" class="icon fa-comment">128</a></li>
         </ul>

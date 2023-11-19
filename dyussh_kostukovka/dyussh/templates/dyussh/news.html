@@ -5,91 +5,15 @@
 {% block content %}
 
 <!--<h1>{{ title }}</h1>-->
+<h1>Спортивные события</h1>
 
 {% for n in news %}
 <!-- Post -->
 <article class="post">
-    <header>
-        <div class="title">
-            <h2><a href="{{n.get_absolute_url}}">{{n.title}}</a></h2>
-            {% url 'news' as news_all_url %} <!-- получение url-страницы и далее сравнение -->
-
-
-            {% if request.path == news_all_url %}
-            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-            <p>Тег:
-                {% include 'dyussh/includes/main_tags_news_header.html' %}
-            </p>
-            {% elif request.path == n.get_absolute_url_category %}
-            <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
-            <p>Тег:
-                {% include 'dyussh/includes/main_tags_news_header.html' %}
-            </p>
-            {% elif request.path == n.get_absolute_url_tag %}
-            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-            <p class="selected">Тег:
-                <!-- Теги -->
-                {% with n.tags.all as tags_news %}
-                {% if tags_news %}
-                {% for t in tags_news %}
-                <span>{{t.tag}}</span>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-            </p>
-            {% endif %}
-
-
-            {% comment %}
-            {% if request.path == news_all_url %}
-            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-            <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
-            {% elif request.path == n.get_absolute_url_category %}
-            <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
-            <p>Тег: <a href="{{n.get_absolute_url_tag}}">{{n.tags.get.tag}}</a></p>
-            {% elif request.path == n.get_absolute_url_tag %}
-            <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-            <p class="selected">Тег: <span>{{n.tags.get.tag}}</span></p>
-            {% else %}
-            <p>Реши меня</p>
-            {% endif %}
-            {% endcomment %}
-
-            {% comment %}
-            {{news_all_url}}
-            {{n.get_absolute_url_tag}}
-            {{n.get_absolute_url_category}}
-            {% endcomment %}
-
-
-        </div>
-        <div class="meta">
-            <time class="published" datetime="{{n.time_create|date:'F d, Y'}}">{{n.time_create|date:'F d, Y'}}</time>
-            <a href="#" class="author"><span class="name">Jane Doe</span><img
-                    src="{% static 'dyussh/images/avatar.jpg' %}" alt=""></a>
-        </div>
-    </header>
-
-    {% if news.photo %}
-    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{{news.photo.url}}" alt=""></a>
-    {% else %}
-    <a href="{{n.get_absolute_url}}" class="image featured"><img src="{% static 'dyussh/images/pic01.jpg' %}"
-                                                                 alt=""></a>
-    {% endif %}
-
-    {% autoescape off %}
-    {{n.content|linebreaks|truncatewords:50}}
-    {% endautoescape %}
-    <footer>
-        <ul class="actions">
-            <li><a href="{{ n.get_absolute_url }}" class="button big">Читать далее</a></li>
-        </ul>
-        <ul class="stats">
-            <li><a href="#">General</a></li>
-            <li><a href="#" class="icon fa-heart">28</a></li>
-            <li><a href="#" class="icon fa-comment">128</a></li>
-        </ul>
-    </footer>
+    {% include 'dyussh/includes/news_posts/news_posts_header.html' %}
+    {% include 'dyussh/includes/news_posts/news_posts_photo.html' %}
+    {% include 'dyussh/includes/news_posts/news_posts_content.html' %}
+    {% include 'dyussh/includes/news_posts/news_posts_footer.html' %}
 </article>
 <!-- end Post -->
 {% endfor %}

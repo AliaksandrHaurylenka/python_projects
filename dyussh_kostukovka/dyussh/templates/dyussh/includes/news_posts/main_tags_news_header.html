@@ -2,7 +2,11 @@
 {% with n.tags.all as tags_news %}
 {% if tags_news %}
 {% for t in tags_news %}
+{% if request.path == news_all_url or request.path == n.get_absolute_url_category %}
 <a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+{% else %}
+<span>{{t.tag}}</span>
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endwith %}
