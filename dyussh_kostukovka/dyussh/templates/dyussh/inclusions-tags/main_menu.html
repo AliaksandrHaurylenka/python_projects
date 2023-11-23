@@ -5,7 +5,7 @@
         {% if forloop.first %} <!-- первый элемент цикла -->
         <li class="selected"><a href="{% url m.slug %}">{{m.title}}</a></li>
         {% else %}
-        <li class="selected"><span>{{m.title}}</span></li>
+        <li><span class="selected">{{m.title}}</span></li>
         {% endif %}
         {% else %}
         <li><a href="{% url m.slug %}">{{m.title}}</a></li>

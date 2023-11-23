@@ -12,15 +12,14 @@
         {{news_all_url}}
 
         {% elif request.path == n.get_absolute_url_category %}
-        <p class="selected">Категория: <span>{{n.news_sport_type.name}}</span></p>
+        <p>Категория: <span class="selected">{{n.news_sport_type.name}}</span></p>
         <p>Тег: {% include 'dyussh/includes/news_posts/main_tags_news_header.html' %}</p>
         {{n.get_absolute_url_category}}
 
         {# elif request.path == n.get_absolute_url_tag #}
         {% else %}
         <p>Категория: <a href="{{n.get_absolute_url_category}}">{{n.news_sport_type.name}}</a></p>
-        <p class="selected">Тег:
-            <!-- Теги -->
+        <p>Тег:
             {% include 'dyussh/includes/news_posts/main_tags_news_header.html' %}
         </p>
         {% endif %}

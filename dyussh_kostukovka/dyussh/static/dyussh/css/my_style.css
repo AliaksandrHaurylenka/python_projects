@@ -1,5 +1,5 @@
 .selected a,
-.selected span {
+span.selected {
     color: #2ebaae !important;
     font-family: "Raleway", Helvetica, sans-serif;
     font-size: 0.7em;
@@ -7,7 +7,7 @@
     text-transform: uppercase;
 }
 
-p.selected span {
+p span.selected {
     font-size: 1em;
 }
 
