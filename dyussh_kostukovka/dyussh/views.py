@@ -168,7 +168,7 @@ def show_tag_news_list(request, tag_slug):
         "menu_selected": 'news',
         'news': news_tags,
         'news_sidebar': news_sidebar,  # sidebar
-        # 'cat_selected': None,
+        'tag_selected': tag_slug,
     }
 
     return render(request, 'dyussh/news.html', context=data)

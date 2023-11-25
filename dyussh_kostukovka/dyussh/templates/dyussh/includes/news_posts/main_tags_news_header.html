@@ -4,8 +4,29 @@
 {% if request.path == news_all_url or request.path == n.get_absolute_url_category %}
 <a href="{{t.get_absolute_url}}">{{t.tag}}</a>
 {% else %}
+{% if t.tag_selected == tag_slug %}
+<span class="selected">{{t.tag}}</span>
+<a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+{{ tag_selected }}
+{% else %}
+<a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+{{ tag_selected }}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{%comment%}
+{% with n.tags.all as tags_news %}
+{% if tags_news %}
+{% for t in tags_news %}
+{% if request.path == news_all_url or request.path == n.get_absolute_url_category %}
+<a href="{{t.get_absolute_url}}">{{t.tag}}</a>
+{% else %}
 <span class="selected">{{t.tag}}</span>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endwith %}
+{%endcomment%}
